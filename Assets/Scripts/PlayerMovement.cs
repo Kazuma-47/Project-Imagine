@@ -28,7 +28,7 @@ sealed class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.up, -turningSpeed * Time.deltaTime* (rigidBody.velocity.magnitude / maxMovementSpeed));
+            transform.Rotate(Vector3.up, -turningSpeed * Time.deltaTime * (rigidBody.velocity.magnitude / maxMovementSpeed));
         }
         if (Input.GetKey(KeyCode.D))
         {
