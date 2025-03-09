@@ -18,11 +18,11 @@ public class Compass : MonoBehaviour
 	public RectTransform compassRect;
 	private float compassBounds;
 	public GameObject pipsContainer;
+	public RectTransform closestObjectivePip;
 
 	//pips
 	public RectTransform compassPipPrefab;
 	private List<RectTransform> objectivePips = new List<RectTransform>();
-	private RectTransform closestObjectivePip;
 
     void Start()
     {
