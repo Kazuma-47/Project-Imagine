@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class ObjectiveManager : MonoBehaviour
 {
-	public static ObjectiveManager instance;
-	private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-    }
-	
 	public GameObject player;
 	public GameObject objectivePrefab;
 	public float objectivesCount;
@@ -21,11 +14,6 @@ public class ObjectiveManager : MonoBehaviour
     void Start()
     {
         SpawnRandom(objectivePrefab);
-    }
-
-    void Update()
-    {
-        
     }
 
 	public void UpdateClosestObjective()
@@ -40,7 +28,6 @@ public class ObjectiveManager : MonoBehaviour
 				closestObjective = objective;
 			}
 		}
-
 	}
 
 	private void SpawnRandom(GameObject prefab)

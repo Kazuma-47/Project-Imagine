@@ -9,33 +9,29 @@ using UnityEngine.UIElements.Experimental;
 public class Compass : MonoBehaviour
 {
 	public ObjectiveManager objectiveManager;
-	public RectTransform compassPipPrefab;
-	public GameObject pipsContainer;
-	public List<RectTransform> objectivePips = new List<RectTransform>();
 
+	//camera references
 	public Camera playerCamera;
-	public GameObject objective;
-	private Vector2 playerPosition;
+	private Vector2 cameraPosition;
 
-	public RectTransform closestObjectivePip;
-	// public RectTransform objectivePip;
-
-	private GameObject compass;
+	//GUI references
 	public RectTransform compassRect;
-	private float compassPipPosition;
 	private float compassBounds;
-	
+	public GameObject pipsContainer;
 
+	//pips
+	public RectTransform compassPipPrefab;
+	private List<RectTransform> objectivePips = new List<RectTransform>();
+	private RectTransform closestObjectivePip;
 
     void Start()
     {
-        compass = transform.parent.gameObject;
 		compassBounds = compassRect.rect.width * 0.5f;
     }
 
     void Update()
     {
-		playerPosition = new Vector2(playerCamera.transform.position.x, playerCamera.transform.position.z);
+		cameraPosition = new Vector2(playerCamera.transform.position.x, playerCamera.transform.position.z);
 
 		if (Input.GetKeyDown("space"))
 		{
@@ -48,7 +44,7 @@ public class Compass : MonoBehaviour
 
 	private float PlaceCompassPip(Vector2 target)
 	{
-		Vector2 VectorToTarget = (target - playerPosition).normalized;
+		Vector2 VectorToTarget = (target - cameraPosition).normalized;
 		float pipPostion = Vector2.Dot(playerCamera.transform.right, VectorToTarget);
 		
 		if (Vector2.Dot(playerCamera.transform.up, VectorToTarget) <= 0)
