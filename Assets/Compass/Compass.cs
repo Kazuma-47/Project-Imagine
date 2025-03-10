@@ -24,10 +24,6 @@ public class Compass : MonoBehaviour
 	public RectTransform compassPipPrefab;
 	private List<RectTransform> objectivePips = new List<RectTransform>();
 
-	//debug
-	public GameObject debug1;
-	public GameObject debug2;
-
     void Start()
     {
 		compassBounds = compassRect.rect.width * 0.5f;
@@ -50,9 +46,6 @@ public class Compass : MonoBehaviour
 	{
 		Vector3 VectorToTarget = (target - cameraPosition).normalized;
 		float pipPostion = Vector3.Dot(playerCamera.transform.right, VectorToTarget);
-
-		debug1.transform.position = playerCamera.transform.position + playerCamera.transform.right;
-		debug2.transform.position = playerCamera.transform.position + new Vector3(VectorToTarget.x, 0, VectorToTarget.y);
 		
 		if (Vector3.Dot(playerCamera.transform.forward, VectorToTarget) <= 0)
 		{
