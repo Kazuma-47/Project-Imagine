@@ -436,13 +436,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectiveManager: {fileID: 2111381561}
-  compassPipPrefab: {fileID: 1502029992480107105, guid: 7a6ff3b0107aef34da9cff4769a23022, type: 3}
-  pipsContainer: {fileID: 1416227376}
-  objectivePips: []
-  playerCamera: {fileID: 447881639}
-  objective: {fileID: 0}
-  closestObjectivePip: {fileID: 1102860374596447131}
+  playerCamera: {fileID: 447881637}
   compassRect: {fileID: 584488316}
+  pipsContainer: {fileID: 1416227376}
+  closestObjectivePip: {fileID: 1102860374596447131}
+  compassPipPrefab: {fileID: 1502029992480107105, guid: 7a6ff3b0107aef34da9cff4769a23022, type: 3}
+  debug1: {fileID: 0}
+  debug2: {fileID: 0}
 --- !u!1 &1416227376
 GameObject:
   m_ObjectHideFlags: 0

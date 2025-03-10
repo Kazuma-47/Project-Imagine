@@ -11,8 +11,8 @@ public class Compass : MonoBehaviour
 	public ObjectiveManager objectiveManager;
 
 	//camera references
-	public Camera playerCamera;
-	private Vector2 cameraPosition;
+	public GameObject playerCamera;
+	private Vector3 cameraPosition;
 
 	//GUI references
 	public RectTransform compassRect;
@@ -31,7 +31,7 @@ public class Compass : MonoBehaviour
 
     void Update()
     {
-		cameraPosition = new Vector2(playerCamera.transform.position.x, playerCamera.transform.position.z);
+		cameraPosition = new Vector3(playerCamera.transform.position.x, 0, playerCamera.transform.position.z);
 
 		if (Input.GetKeyDown("space"))
 		{
@@ -42,12 +42,12 @@ public class Compass : MonoBehaviour
 		UpdatePips();
     }
 
-	private float PlaceCompassPip(Vector2 target)
+	private float PlaceCompassPip(Vector3 target)
 	{
-		Vector2 VectorToTarget = (target - cameraPosition).normalized;
-		float pipPostion = Vector2.Dot(playerCamera.transform.right, VectorToTarget);
+		Vector3 VectorToTarget = (target - cameraPosition).normalized;
+		float pipPostion = Vector3.Dot(playerCamera.transform.right, VectorToTarget);
 		
-		if (Vector2.Dot(playerCamera.transform.up, VectorToTarget) <= 0)
+		if (Vector3.Dot(playerCamera.transform.forward, VectorToTarget) <= 0)
 		{
 			if (pipPostion <= 0) pipPostion = -1f;
 			if (pipPostion >= 0) pipPostion = 1f;
@@ -78,14 +78,14 @@ public class Compass : MonoBehaviour
 		int index = 0;
 		for (int i = index; i < objectivePips.Count; i++)
 		{
-			Vector2 objectiveLocation = new Vector2(objectiveManager.objectives[i].transform.position.x, objectiveManager.objectives[i].transform.position.z);
+			Vector3 objectiveLocation = new Vector3(objectiveManager.objectives[i].transform.position.x, 0, objectiveManager.objectives[i].transform.position.z);
 			objectivePips[i].localPosition = new Vector3(PlaceCompassPip(objectiveLocation), 0, 0);
 		}
 
 		// updating the closest objective constantly can lead to player confusion.
 		// objectiveManager.UpdateClosestObjective();
 
-		Vector2 closestObjectiveLocation = new Vector2(objectiveManager.closestObjective.transform.position.x, objectiveManager.closestObjective.transform.position.z);
+		Vector3 closestObjectiveLocation = new Vector3(objectiveManager.closestObjective.transform.position.x, 0, objectiveManager.closestObjective.transform.position.z);
 		closestObjectivePip.localPosition = new Vector3(PlaceCompassPip(closestObjectiveLocation), 0, 0);
 	}
 
