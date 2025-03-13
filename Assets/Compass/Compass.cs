@@ -27,16 +27,12 @@ public class Compass : MonoBehaviour
     void Start()
     {
 		compassBounds = compassRect.rect.width * 0.5f;
+        CreateObjectivePips();
     }
 
     void Update()
     {
 		cameraPosition = new Vector3(playerCamera.transform.position.x, 0, playerCamera.transform.position.z);
-
-		if (Input.GetKeyDown("space"))
-		{
-			CreateObjectivePips();
-		}
 
 		if (objectivePips.Count < objectiveManager.objectives.Count) return;
 		UpdatePips();
@@ -56,7 +52,7 @@ public class Compass : MonoBehaviour
 		return compassBounds * pipPostion;
 	}
 
-	void CreateObjectivePips()
+	public void CreateObjectivePips()
 	{
 		// updating the closest objective constantly can lead to player confusion. thats why it only happens here
 		objectiveManager.UpdateClosestObjective();

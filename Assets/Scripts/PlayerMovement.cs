@@ -34,6 +34,15 @@ sealed class PlayerMovement : MonoBehaviour
         {
             transform.Rotate(Vector3.up, turningSpeed * Time.deltaTime * (rigidBody.velocity.magnitude / maxMovementSpeed));
         }
+        if (Input.GetKey(KeyCode.S))
+        {
+            Vector3 backwardMovement = -transform.forward * movementSpeed * Time.deltaTime;
+            Vector3 newVelocity = rigidBody.velocity + backwardMovement;
+
+            newVelocity = Vector3.ClampMagnitude(newVelocity, maxMovementSpeed);
+
+            rigidBody.velocity = new Vector3(newVelocity.x, rigidBody.velocity.y, newVelocity.z);
+        }
         else
         {
             rigidBody.velocity = Vector3.Lerp(rigidBody.velocity, Vector3.zero, Time.deltaTime * 2f);

@@ -10,11 +10,22 @@ public class ObjectiveManager : MonoBehaviour
 	public float objectivesCount;
 	public List<GameObject> objectives = new List<GameObject>();
 	public GameObject closestObjective;
+	public Compass compass;
 
     void Start()
     {
         SpawnRandom(objectivePrefab);
     }
+
+	public void ReachedIsland(GameObject island)
+	{
+		if(island == closestObjective)
+		{
+			objectives.Remove(island);
+			island.GetComponent<Island>().Removed();
+			compass.CreateObjectivePips();
+        }
+	}
 
 	public void UpdateClosestObjective()
 	{	
