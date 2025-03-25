@@ -382,8 +382,8 @@ GameObject:
   - component: {fileID: 496519176}
   - component: {fileID: 496519175}
   - component: {fileID: 496519174}
-  - component: {fileID: 496519179}
   - component: {fileID: 496519180}
+  - component: {fileID: 496519179}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -517,8 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a9ce27085a1e8438c1dbfce57c4423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  maxMovementSpeed: 10
+  accelerationSpeed: 10
+  maxMovementSpeed: 7
   turningSpeed: 80
 --- !u!114 &496519180
 MonoBehaviour:
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 496519173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15b98cab64773144b40977137009f13, type: 3}
+  m_Script: {fileID: 11500000, guid: 77d9d4cc58d723c4d986f9676200be82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &839871286

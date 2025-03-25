@@ -1,44 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 sealed class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float accelerationSpeed;
     [SerializeField] private float maxMovementSpeed;
     [SerializeField] private float turningSpeed;
     private Rigidbody rigidBody;
+    private bool isMoving;
+    private float movementSpeed;
+    private void Start() => rigidBody = GetComponent<Rigidbody>();
 
-    private void Start()
+    public void Move(float inputDirection)
     {
-        rigidBody = GetComponent<Rigidbody>();
+        movementSpeed = Mathf.Lerp(rigidBody.velocity.magnitude, maxMovementSpeed, accelerationSpeed * Time.deltaTime);
+
+        Vector3 forwardMovement = transform.forward * inputDirection * movementSpeed * Time.deltaTime;
+        Vector3 newVelocity = rigidBody.velocity + forwardMovement;
+        newVelocity = Vector3.ClampMagnitude(newVelocity, maxMovementSpeed);
+
+        rigidBody.velocity = new Vector3(newVelocity.x, rigidBody.velocity.y, newVelocity.z);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            Vector3 forwardMovement = transform.forward * movementSpeed * Time.deltaTime;
-            Vector3 newVelocity = rigidBody.velocity + forwardMovement;
+        print(rigidBody.velocity);
+        if(rigidBody.velocity != Vector3.zero && !isMoving) 
+            rigidBody.velocity = Vector3.Lerp(rigidBody.velocity, Vector3.zero, Time.deltaTime * 1.5f);
+    }
 
-            newVelocity = Vector3.ClampMagnitude(newVelocity, maxMovementSpeed);
-
-            rigidBody.velocity = new Vector3(newVelocity.x, rigidBody.velocity.y, newVelocity.z);
-        }
-        if (Input.GetKey(KeyCode.A))
+    public void Turn(float steerDirection)
+    {
+        if (steerDirection != 0 && isMoving)
         {
-            transform.Rotate(Vector3.up, -turningSpeed * Time.deltaTime * (rigidBody.velocity.magnitude / maxMovementSpeed));
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(Vector3.up, turningSpeed * Time.deltaTime * (rigidBody.velocity.magnitude / maxMovementSpeed));
-        }
-        else
-        {
-            rigidBody.velocity = Vector3.Lerp(rigidBody.velocity, Vector3.zero, Time.deltaTime * 2f);
+            float turnStrength = turningSpeed * Time.deltaTime * (rigidBody.velocity.magnitude / maxMovementSpeed);
+            transform.Rotate(Vector3.up, steerDirection * turnStrength);
         }
     }
+
+    public void SetIsMoving(bool value) => isMoving = value;
 }
 
 
