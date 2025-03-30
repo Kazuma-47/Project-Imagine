@@ -7,35 +7,30 @@ public class ObjectiveManager : MonoBehaviour
 {
 	public GameObject player;
 	public GameObject objectivePrefab;
-	public float objectivesCount;
-	public List<GameObject> objectives = new List<GameObject>();
+	public float FishSpotCount;
+	public List<GameObject> FishSpots = new List<GameObject>();
+	public List<GameObject> islands = new List<GameObject>();
+	private int currentIndex = 0;
 	public GameObject closestObjective;
 
     void Start()
     {
         SpawnRandom(objectivePrefab);
+		closestObjective = islands[currentIndex];
     }
 
-	public void UpdateClosestObjective()
-	{	
-		float shortestDistance = 1000;
-		foreach (var objective in objectives)
-		{
-			float distance = Vector3.Distance(objective.transform.position, player.transform.position);
-			if (distance < shortestDistance)
-			{
-				shortestDistance = distance;
-				closestObjective = objective;
-			}
-		}
+	public void GetNextIsland()
+	{
+		currentIndex++;
+		closestObjective = islands[currentIndex];
 	}
 
 	private void SpawnRandom(GameObject prefab)
 	{
-		for (int i = 0; i < objectivesCount; i++)
+		for (int i = 0; i < FishSpotCount; i++)
 		{
 			GameObject instance = Instantiate(prefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, transform);
-			objectives.Add(instance);
+			FishSpots.Add(instance);
 		}
 	}
 }

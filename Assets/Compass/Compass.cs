@@ -1,46 +1,40 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-using UnityEngine.UIElements.Experimental;
+
 
 public class Compass : MonoBehaviour
 {
-	public ObjectiveManager objectiveManager;
+	private ObjectiveManager objectiveManager;
 
-	//camera references
-	public GameObject playerCamera;
-	private Vector3 cameraPosition;
+	[Header("Gui references")]
+	[SerializeField] private RectTransform compassRect;
+	[SerializeField] private GameObject pipsContainer;
+	[SerializeField] private RectTransform closestObjectivePip;
 
-	//GUI references
-	public RectTransform compassRect;
-	private float compassBounds;
-	public GameObject pipsContainer;
-	public RectTransform closestObjectivePip;
-
-	//pips
-	public RectTransform compassPipPrefab;
+	[Header("pip references")]
+	[SerializeField] private RectTransform compassPipPrefab;
 	private List<RectTransform> objectivePips = new List<RectTransform>();
 
-    void Start()
+    private Camera playerCamera;
+    private Vector3 cameraPosition;
+
+    private float compassBounds;
+
+    private void Start()
     {
-		compassBounds = compassRect.rect.width * 0.5f;
+	objectiveManager = GetComponent<ObjectiveManager>();
+	playerCamera = Camera.main;
+	compassBounds = compassRect.rect.width * 0.5f;
+    CreateObjectivePips();
     }
 
-    void Update()
-    {
+	private void Update()
+	{
 		cameraPosition = new Vector3(playerCamera.transform.position.x, 0, playerCamera.transform.position.z);
 
-		if (Input.GetKeyDown("space"))
-		{
-			CreateObjectivePips();
-		}
-
-		if (objectivePips.Count < objectiveManager.objectives.Count) return;
+		if (objectivePips.Count < objectiveManager.FishSpots.Count) return;
 		UpdatePips();
-    }
+	}
 
 	private float PlaceCompassPip(Vector3 target)
 	{
@@ -56,29 +50,26 @@ public class Compass : MonoBehaviour
 		return compassBounds * pipPostion;
 	}
 
-	void CreateObjectivePips()
+	private void CreateObjectivePips()
 	{
-		// updating the closest objective constantly can lead to player confusion. thats why it only happens here
-		objectiveManager.UpdateClosestObjective();
-
 		foreach (RectTransform pip in objectivePips)
 		{
 			Destroy(pip.gameObject);
 		}
 		objectivePips.Clear();
-		foreach (GameObject location in objectiveManager.objectives)
+		foreach (GameObject location in objectiveManager.FishSpots)
 		{
 			RectTransform instance = Instantiate(compassPipPrefab, pipsContainer.transform);
 			objectivePips.Add(instance);
 		}
 	}
 
-	void UpdatePips()
+	private void UpdatePips()
 	{
 		int index = 0;
 		for (int i = index; i < objectivePips.Count; i++)
 		{
-			Vector3 objectiveLocation = new Vector3(objectiveManager.objectives[i].transform.position.x, 0, objectiveManager.objectives[i].transform.position.z);
+			Vector3 objectiveLocation = new Vector3(objectiveManager.FishSpots[i].transform.position.x, 0, objectiveManager.FishSpots[i].transform.position.z);
 			objectivePips[i].localPosition = new Vector3(PlaceCompassPip(objectiveLocation), 0, 0);
 		}
 
