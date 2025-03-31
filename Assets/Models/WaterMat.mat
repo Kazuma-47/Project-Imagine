@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterMat
+  m_Shader: {fileID: -6465566751694194690, guid: 869cb2f0188ec0f44b674502e19c85e6, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_10824E91: 0
+    - Vector1_37B4F632: 0.4
+    - Vector1_6027594E: 0.2
+    - Vector1_69A36BB5: 0.41
+    - Vector1_6BCF0A3B: 10
+    - Vector1_7021F2A: 1.2
+    - Vector1_714DDBF2: 0.19
+    - Vector1_76BBEA9A: 1000
+    - Vector1_8D23046F: 1
+    - Vector1_9985B71A: 1500
+    - Vector1_9A054B15: 25
+    - Vector1_BC99529E: 2
+    - Vector1_C423048E: 0.001
+    - Vector1_D5B43CB7: 0.008
+    - Vector1_E0AC78C8: 400
+    - Vector1_E22D5CDD: 0.5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors:
+    - Color_A0DA061C: {r: 0.68235296, g: 1, b: 0.9744271, a: 0}
+    - Color_BF8AC582: {r: 0.08647891, g: 0, b: 0.29411766, a: 0}
+    - Color_FE8B5821: {r: 0.93207544, g: 0.9141514, b: 0.7931434, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &3908122336871095602
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
