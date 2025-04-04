@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class ObjectiveManager : MonoBehaviour
 {
 	public GameObject player;
@@ -12,12 +12,24 @@ public class ObjectiveManager : MonoBehaviour
 
     void Start()
     {
-		//closestObjective = islands[currentIndex];
-    }
+		closestObjective = islands[currentIndex];
+	}
 
-	public void GetNextIsland()
+	public void NextObjective()
 	{
 		currentIndex++;
 		closestObjective = islands[currentIndex];
+	}
+
+	public void ObjectiveCheck(Island island)
+	{
+		bool isSold = InventoryManager.Instance.SellFish(island.GetFishRequirenment());
+		if (isSold)
+		{
+            NextObjective();
+			island.OnCompleted();
+        }
+		
+
 	}
 }

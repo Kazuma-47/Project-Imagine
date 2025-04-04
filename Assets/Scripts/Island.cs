@@ -2,14 +2,29 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Island : MonoBehaviour
 {
-    private int fishRequirenment;
-    private UnityEvent <int> OnCollision = new UnityEvent<int>();
+    [SerializeField] private int fishRequirenment;
+    [SerializeField] private bool active;
+    [SerializeField] private UnityEvent<Island> OnCollision = new();
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (active)
         {
-            OnCollision?.Invoke(fishRequirenment);
+            if (collision.transform.CompareTag("Player"))
+            {
+                print("player hit");
+                OnCollision?.Invoke(this);
+            }
         }
+    }
+
+    public int GetFishRequirenment()
+    {
+        return fishRequirenment;
+    }
+
+    public void OnCompleted()
+    {
+        active = !active;
     }
 }
