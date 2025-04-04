@@ -36,8 +36,11 @@ public class FishnetSpawner : MonoBehaviour
 
     public void RemoveFish(GameObject fish)
     {
-        if(fishList.Contains(fish))
+        if (fishList.Contains(fish))
+        {
             fishList.Remove(fish);
+            Destroy(fish);
+        }  
     }
 
     private void OnDrawGizmos()

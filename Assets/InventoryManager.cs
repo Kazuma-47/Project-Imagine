@@ -19,6 +19,10 @@ public class InventoryManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); 
     }
 
+    private void Update()
+    {
+        print(Fish);
+    }
     public void AddFish() => Fish++;
 
     public bool SellFish(int fishAmount)

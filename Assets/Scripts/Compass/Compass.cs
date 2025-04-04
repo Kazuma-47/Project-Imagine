@@ -57,7 +57,7 @@ public class Compass : MonoBehaviour
 			Destroy(pip.gameObject);
 		}
 		objectivePips.Clear();
-		foreach (GameObject location in objectiveManager.FishSpots)
+		foreach (FishnetSpawner location in objectiveManager.FishSpots)
 		{
 			RectTransform instance = Instantiate(compassPipPrefab, pipsContainer.transform);
 			objectivePips.Add(instance);

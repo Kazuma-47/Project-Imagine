@@ -12,7 +12,6 @@ public class Island : MonoBehaviour
         {
             if (collision.transform.CompareTag("Player"))
             {
-                print("player hit");
                 OnCollision?.Invoke(this);
             }
         }

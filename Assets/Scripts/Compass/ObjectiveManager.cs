@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+
 public class ObjectiveManager : MonoBehaviour
 {
 	public GameObject player;
-	public GameObject objectivePrefab;
-	public List<GameObject> FishSpots = new List<GameObject>();
+	public List<FishnetSpawner> FishSpots = new List<FishnetSpawner>();
 	public List<GameObject> islands = new List<GameObject>();
 	private int currentIndex = 0;
 	public GameObject closestObjective;
@@ -28,8 +27,13 @@ public class ObjectiveManager : MonoBehaviour
 		{
             NextObjective();
 			island.OnCompleted();
-        }
-		
+			RefreshFishSpots();
+		}
+	}
 
+	public void RefreshFishSpots()
+	{
+		foreach (FishnetSpawner spot in FishSpots)
+			spot.RespawnFish();
 	}
 }
