@@ -24,7 +24,6 @@ sealed class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        print(rigidBody.velocity);
         if(rigidBody.velocity != Vector3.zero && !isMoving) 
             rigidBody.velocity = Vector3.Lerp(rigidBody.velocity, Vector3.zero, Time.deltaTime * 1.5f);
     }
