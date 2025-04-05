@@ -14,6 +14,7 @@ public class FishSpot : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             InventoryManager.Instance.AddFish();
+            UIHandler.Instance.UpdateUI();
             spawner.RemoveFish(gameObject);
         }    
     }

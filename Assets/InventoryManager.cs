@@ -19,10 +19,6 @@ public class InventoryManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); 
     }
 
-    private void Update()
-    {
-        print(Fish);
-    }
     public void AddFish() => Fish++;
 
     public bool SellFish(int fishAmount)
@@ -30,6 +26,7 @@ public class InventoryManager : MonoBehaviour
         if (Fish >= fishAmount)
         {
             Fish -= fishAmount;
+            UIHandler.Instance.UpdateUI();
             return true;
         }
         else
