@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterMat
-  m_Shader: {fileID: -6465566751694194690, guid: 869cb2f0188ec0f44b674502e19c85e6, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 3869a9cf4c22ca749a929e806f0d6990, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - Vector1_10824E91: 0
-    - Vector1_37B4F632: 0.4
+    - Vector1_37B4F632: 0.2
     - Vector1_6027594E: 0.2
     - Vector1_69A36BB5: 0.41
     - Vector1_6BCF0A3B: 10
@@ -50,11 +50,12 @@ Material:
     - Vector1_9A054B15: 25
     - Vector1_BC99529E: 2
     - Vector1_C423048E: 0.001
-    - Vector1_D5B43CB7: 0.008
-    - Vector1_E0AC78C8: 400
+    - Vector1_D5B43CB7: 0.002
+    - Vector1_E0AC78C8: 8
     - Vector1_E22D5CDD: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _WaveDensity: 0.1
     m_Colors:
     - Color_A0DA061C: {r: 0.68235296, g: 1, b: 0.9744271, a: 0}
     - Color_BF8AC582: {r: 0.08647891, g: 0, b: 0.29411766, a: 0}
