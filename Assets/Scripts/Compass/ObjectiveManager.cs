@@ -4,31 +4,36 @@ using UnityEngine;
 public class ObjectiveManager : MonoBehaviour
 {
 	public GameObject player;
-	public GameObject objectivePrefab;
-	public float FishSpotCount;
-	public List<GameObject> FishSpots = new List<GameObject>();
+	public List<FishnetSpawner> FishSpots = new List<FishnetSpawner>();
 	public List<GameObject> islands = new List<GameObject>();
 	private int currentIndex = 0;
 	public GameObject closestObjective;
 
     void Start()
     {
-        SpawnRandom(objectivePrefab);
 		closestObjective = islands[currentIndex];
-    }
+	}
 
-	public void GetNextIsland()
+	public void NextObjective()
 	{
 		currentIndex++;
 		closestObjective = islands[currentIndex];
 	}
 
-	private void SpawnRandom(GameObject prefab)
+	public void ObjectiveCheck(Island island)
 	{
-		for (int i = 0; i < FishSpotCount; i++)
+		bool isSold = InventoryManager.Instance.SellFish(island.GetFishRequirenment());
+		if (isSold)
 		{
-			GameObject instance = Instantiate(prefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, transform);
-			FishSpots.Add(instance);
+            NextObjective();
+			island.OnCompleted();
+			RefreshFishSpots();
 		}
+	}
+
+	public void RefreshFishSpots()
+	{
+		foreach (FishnetSpawner spot in FishSpots)
+			spot.RespawnFish();
 	}
 }
