@@ -57,7 +57,7 @@ public class Compass : MonoBehaviour
 			Destroy(pip.gameObject);
 		}
 		objectivePips.Clear();
-		foreach (GameObject location in objectiveManager.FishSpots)
+		foreach (FishnetSpawner location in objectiveManager.FishSpots)
 		{
 			RectTransform instance = Instantiate(compassPipPrefab, pipsContainer.transform);
 			objectivePips.Add(instance);
@@ -72,9 +72,6 @@ public class Compass : MonoBehaviour
 			Vector3 objectiveLocation = new Vector3(objectiveManager.FishSpots[i].transform.position.x, 0, objectiveManager.FishSpots[i].transform.position.z);
 			objectivePips[i].localPosition = new Vector3(PlaceCompassPip(objectiveLocation), 0, 0);
 		}
-
-		// updating the closest objective constantly can lead to player confusion.
-		// objectiveManager.UpdateClosestObjective();
 
 		Vector3 closestObjectiveLocation = new Vector3(objectiveManager.closestObjective.transform.position.x, 0, objectiveManager.closestObjective.transform.position.z);
 		closestObjectivePip.localPosition = new Vector3(PlaceCompassPip(closestObjectiveLocation), 0, 0);
