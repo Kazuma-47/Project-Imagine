@@ -351,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7711924117554254136}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 464.72, y: 52.00512, z: 495.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -377,7 +377,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -414,6 +414,7 @@ MonoBehaviour:
         m_CallState: 2
   islandText: {fileID: 5475720831193258175}
   islandRequirementObject: {fileID: 1730121295468832289}
+  tutorialIsland: 0
 --- !u!1001 &3276887747976234875
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class SpawnSerpent : MonoBehaviour
@@ -63,8 +64,13 @@ public class SpawnSerpent : MonoBehaviour
     private Vector3 GetRandomPositionAroundPlayer()
     {
         Vector2 randomCircle = Random.insideUnitCircle * radius;
-        Vector3 spawnPosition = new Vector3(randomCircle.x, 0, randomCircle.y); 
-        return player.transform.position + spawnPosition;
+        Vector3 offset = new Vector3(randomCircle.x, 0, randomCircle.y);
+
+        Vector3 forwardOffset = player.transform.forward.normalized * 2f;
+
+        Vector3 spawnPosition = player.transform.position + offset + forwardOffset;
+        spawnPosition.y = 0; 
+        return spawnPosition;
     }
 
     public void SerpentAnimationOver()
@@ -87,10 +93,19 @@ public class SpawnSerpent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (debug)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(player.transform.position, radius);
-        }
+        if (!debug || player == null) return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(player.transform.position, 0.3f); 
+
+        Vector3 forwardOffset = player.transform.forward.normalized * 2f; 
+        Vector3 spawnCenter = player.transform.position + forwardOffset;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(spawnCenter, radius); 
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(player.transform.position, spawnCenter);
     }
+
 }

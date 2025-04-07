@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectiveManager : MonoBehaviour
 {
 	public List<FishnetSpawner> FishSpots = new List<FishnetSpawner>();
 	public List<GameObject> islands = new List<GameObject>();
+	[SerializeField] private UnityEvent onComplete = new();
 	private int currentIndex = 0;
 	public GameObject closestObjective;
 	public GameObject tutorialBorder;
@@ -18,6 +20,14 @@ public class ObjectiveManager : MonoBehaviour
 		closestObjective = islands[currentIndex];
         islands[currentIndex].GetComponent<Island>().ToggleActive();
     }
+	public void OnCompletedCheck()
+	{
+        if (currentIndex >= islands.Count)
+        {
+			onComplete?.Invoke();
+        }
+    }
+
 
 	public void ObjectiveCheck(Island island)
 	{
