@@ -17,8 +17,8 @@ public class FishnetSpawner : MonoBehaviour
     {
         for (int i = 0; i < fishAmount; i++)
         {
-            Vector3 position = Random.insideUnitSphere * radius;
-            position.y = 0;
+            Vector3 position = transform.position + (Random.insideUnitSphere * radius);
+            position.y = transform.position.y;
             GameObject fish = Instantiate(fishSpot, position, Quaternion.identity, transform);
             fishList.Add(fish);
         }
@@ -28,12 +28,13 @@ public class FishnetSpawner : MonoBehaviour
     {
         for (int i = fishList.Count; i < fishAmount; i++)
         {
-            Vector3 position = Random.insideUnitSphere * radius;
-            position.y = 0;
+            Vector3 position = transform.position + (Random.insideUnitSphere * radius);
+            position.y = transform.position.y;
             GameObject fish = Instantiate(fishSpot, position, Quaternion.identity, transform);
             fishList.Add(fish);
         }
     }
+
 
     public void RemoveFish(GameObject fish)
     {
