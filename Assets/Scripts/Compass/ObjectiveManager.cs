@@ -18,18 +18,22 @@ public class ObjectiveManager : MonoBehaviour
 		TutorialCheck();
         currentIndex++;
 		closestObjective = islands[currentIndex];
-        islands[currentIndex].GetComponent<Island>().ToggleActive();
+		Island island = islands[currentIndex].GetComponent<Island>();
+		if (island != null)
+		{
+			island.ToggleActive();
+		}
     }
-	public void OnCompletedCheck()
-	{
-        if (currentIndex >= islands.Count)
+    public void OnCompletedCheck()
+    {
+        if (currentIndex >= islands.Count - 1)
         {
-			onComplete?.Invoke();
+            onComplete?.Invoke();
         }
     }
 
 
-	public void ObjectiveCheck(Island island)
+    public void ObjectiveCheck(Island island)
 	{
 		bool isSold = InventoryManager.Instance.SellFish(island.GetFishRequirenment());
 		if (isSold)
