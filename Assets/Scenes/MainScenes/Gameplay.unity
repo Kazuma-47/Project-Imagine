@@ -512,9 +512,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6713789267683305310, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
+      propertyPath: active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713789267683305310, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
       propertyPath: tutorialIsland
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6713789267683305310, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 734387365}
     - target: {fileID: 7711924117554254136, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
       propertyPath: m_Name
       value: Village 3
@@ -658,6 +666,87 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &482415572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 482415573}
+  - component: {fileID: 482415575}
+  - component: {fileID: 482415574}
+  m_Layer: 0
+  m_Name: 'Peaceful '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482415573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482415572}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.019601477, y: -0.9504901, z: 0.05982932, w: -0.30431053}
+  m_LocalPosition: {x: 385.25, y: 51.77, z: 623.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1619744467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &482415574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482415572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b73dc41365a72a4e8c0f04f4f387a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734387363}
+        m_TargetAssemblyTypeName: SpawnSerpent, Assembly-CSharp
+        m_MethodName: SetCanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &482415575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482415572}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 69.997284, y: 27.20465, z: 1}
+  m_Center: {x: 1.1094913, y: -0.8932286, z: 0.00004794938}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +822,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.2e-44, z: 1.3188e-41, w: -1.7575821e-26}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 5.6e-44, z: 1.3431e-41, w: 9.1835e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -848,6 +937,7 @@ MonoBehaviour:
   - {fileID: 142637705}
   - {fileID: 1400917663}
   closestObjective: {fileID: 0}
+  tutorialBorder: {fileID: 1860488550}
 --- !u!114 &734387366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,6 +1444,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6713789267683305310, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
+      propertyPath: active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713789267683305310, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
       propertyPath: tutorialIsland
       value: 1
       objectReference: {fileID: 0}
@@ -1361,6 +1455,10 @@ PrefabInstance:
       propertyPath: fishRequirenment
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6713789267683305310, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
+      propertyPath: OnCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 734387365}
     - target: {fileID: 7711924117554254136, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
       propertyPath: m_Name
       value: Village 2
@@ -1383,6 +1481,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3621632682532516883, guid: 7909fcc9b25051f4a96ce4e75ee7766f, type: 3}
   m_PrefabInstance: {fileID: 1460835177}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1619744466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619744467}
+  m_Layer: 0
+  m_Name: borders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1619744467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619744466}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1860488551}
+  - {fileID: 482415573}
+  - {fileID: 2075903198}
+  m_Father: {fileID: 1699839657}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1639267600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1575,7 @@ Transform:
   m_GameObject: {fileID: 1652989243}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1543,9 +1675,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 61282784991239359}
   - {fileID: 192359186}
+  - {fileID: 61282784991239359}
   - {fileID: 1652989244}
+  - {fileID: 1619744467}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1702735289
@@ -1617,6 +1750,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2a4dd76a4f4de24b935c18e0d5b7166, type: 3}
+--- !u!1 &1860488550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860488551}
+  - component: {fileID: 1860488552}
+  m_Layer: 0
+  m_Name: Tutorial border
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1860488551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860488550}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.019601477, y: -0.9504901, z: 0.05982932, w: -0.30431053}
+  m_LocalPosition: {x: 393.1611, y: 53.438835, z: 620.33307}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1619744467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1860488552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860488550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 45.88104, y: 27.20465, z: 1}
+  m_Center: {x: -0.8267269, y: -0.8932286, z: 0.000040062427}
 --- !u!114 &2038977183 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6659886029298646708, guid: a2a4dd76a4f4de24b935c18e0d5b7166, type: 3}
@@ -1633,6 +1819,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3767537236176626805, guid: a2a4dd76a4f4de24b935c18e0d5b7166, type: 3}
   m_PrefabInstance: {fileID: 325422608}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2075903197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2075903198}
+  - component: {fileID: 2075903200}
+  - component: {fileID: 2075903199}
+  m_Layer: 0
+  m_Name: Danger border
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2075903198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075903197}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.019601477, y: -0.9504901, z: 0.05982932, w: -0.30431053}
+  m_LocalPosition: {x: 371.5, y: 51.77, z: 631.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1619744467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2075903199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075903197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b73dc41365a72a4e8c0f04f4f387a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734387363}
+        m_TargetAssemblyTypeName: SpawnSerpent, Assembly-CSharp
+        m_MethodName: SetCanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!65 &2075903200
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075903197}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 69.997284, y: 27.20465, z: 1}
+  m_Center: {x: 1.1094913, y: -0.8932286, z: 0.00004794938}
 --- !u!1 &2105724443
 GameObject:
   m_ObjectHideFlags: 0

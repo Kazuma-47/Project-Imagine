@@ -7,12 +7,14 @@ public class ObjectiveManager : MonoBehaviour
 	public List<GameObject> islands = new List<GameObject>();
 	private int currentIndex = 0;
 	public GameObject closestObjective;
+	public GameObject tutorialBorder;
 
     void Start() => closestObjective = islands[currentIndex];
 
     public void NextObjective()
 	{
-		currentIndex++;
+		TutorialCheck();
+        currentIndex++;
 		closestObjective = islands[currentIndex];
         islands[currentIndex].GetComponent<Island>().ToggleActive();
     }
@@ -25,6 +27,14 @@ public class ObjectiveManager : MonoBehaviour
             NextObjective();
 			island.OnCompleted();
 			RefreshFishSpots();
+		}
+	}
+	public void TutorialCheck()
+	{
+		if(currentIndex >= 2)
+		{
+			if(tutorialBorder != null)
+				Destroy(tutorialBorder);
 		}
 	}
 
