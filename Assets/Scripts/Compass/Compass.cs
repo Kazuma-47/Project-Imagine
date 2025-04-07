@@ -73,9 +73,6 @@ public class Compass : MonoBehaviour
 			objectivePips[i].localPosition = new Vector3(PlaceCompassPip(objectiveLocation), 0, 0);
 		}
 
-		// updating the closest objective constantly can lead to player confusion.
-		// objectiveManager.UpdateClosestObjective();
-
 		Vector3 closestObjectiveLocation = new Vector3(objectiveManager.closestObjective.transform.position.x, 0, objectiveManager.closestObjective.transform.position.z);
 		closestObjectivePip.localPosition = new Vector3(PlaceCompassPip(closestObjectiveLocation), 0, 0);
 	}
