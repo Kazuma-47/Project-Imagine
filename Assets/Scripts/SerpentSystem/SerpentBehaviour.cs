@@ -26,6 +26,9 @@ public class SerpentBehaviour : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.transform.CompareTag("Player"))
+        {
+            LifeSystem.Instance.TakeDamage();
+        }
     }
 }
