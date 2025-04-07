@@ -7,6 +7,7 @@ public class FishnetSpawner : MonoBehaviour
     [SerializeField] private float radius;
     [SerializeField] int fishAmount;
     private List<GameObject> fishList = new();
+    [SerializeField] private bool debug;
 
     private void Start()
     {
@@ -45,7 +46,10 @@ public class FishnetSpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        if (debug)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, radius);
+        }
     }
 }

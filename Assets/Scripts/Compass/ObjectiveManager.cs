@@ -3,22 +3,19 @@ using UnityEngine;
 
 public class ObjectiveManager : MonoBehaviour
 {
-	public GameObject player;
 	public List<FishnetSpawner> FishSpots = new List<FishnetSpawner>();
 	public List<GameObject> islands = new List<GameObject>();
 	private int currentIndex = 0;
 	public GameObject closestObjective;
 
-    void Start()
-    {
-		closestObjective = islands[currentIndex];
-	}
+    void Start() => closestObjective = islands[currentIndex];
 
-	public void NextObjective()
+    public void NextObjective()
 	{
 		currentIndex++;
 		closestObjective = islands[currentIndex];
-	}
+        islands[currentIndex].GetComponent<Island>().ToggleActive();
+    }
 
 	public void ObjectiveCheck(Island island)
 	{
