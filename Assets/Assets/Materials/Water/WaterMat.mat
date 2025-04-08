@@ -55,7 +55,7 @@ Material:
     - Vector1_E22D5CDD: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WaveDensity: 0.1
+    - _WaveDensity: 0.05
     m_Colors:
     - Color_A0DA061C: {r: 0.68235296, g: 1, b: 0.9744271, a: 0}
     - Color_BF8AC582: {r: 0.08647891, g: 0, b: 0.29411766, a: 0}

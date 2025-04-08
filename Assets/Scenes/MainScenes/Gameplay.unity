@@ -1437,7 +1437,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 1.5e-44, z: 1.0976e-41, w: -3.4920097e+11}
+  m_BoundingSphereOverride: {x: 0, y: 2.7357116e+20, z: 3.6376e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2484,6 +2484,10 @@ PrefabInstance:
       propertyPath: accelerationSpeed
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 3859143982081825355, guid: 0237eb17d5377f54793f137406634287, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4737762803679033494, guid: 0237eb17d5377f54793f137406634287, type: 3}
       propertyPath: m_LocalPosition.x
       value: -63.91
@@ -3325,7 +3329,7 @@ Transform:
   m_GameObject: {fileID: 1995276711}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 500, y: 49.5, z: 500}
+  m_LocalPosition: {x: 500, y: 49.8, z: 500}
   m_LocalScale: {x: 1000, y: 1000.0004, z: 1000.0004}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3498,7 +3502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 30d6419fa0ad64b4abd5650ecc31576b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 30d6419fa0ad64b4abd5650ecc31576b, type: 3}
       propertyPath: m_LocalPosition.z
