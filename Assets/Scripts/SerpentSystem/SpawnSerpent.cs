@@ -14,6 +14,7 @@ public class SpawnSerpent : MonoBehaviour
     private float spawnInterval;
     [HideInInspector] public bool SerpentActive;
     public bool CanAttack;
+    [SerializeField] private float minSpawnDistance;
 
     private void Awake()
     {
@@ -28,54 +29,48 @@ public class SpawnSerpent : MonoBehaviour
     }
     private void Start()
     { 
-        StartCoroutine(TimerCoroutine()); 
+        StartCoroutine(SpawnObjects()); 
     }
 
-    private IEnumerator TimerCoroutine()
+    private IEnumerator SpawnObjects()
     {
         while (true)
         {
             if (CanAttack && !SerpentActive)
             {
-                float spawnInterval = GetRandomInterval();
-                yield return new WaitForSeconds(spawnInterval);
-
-                if (!SerpentActive && CanAttack)
-                {
-                    StartCoroutine(SpawnObjects());
-                    SerpentActive = true;
-                }
+                SerpentActive = true;
+                Vector3 spawnPosition = GetRandomPositionAroundPlayer();
+                GameObject serpent = Instantiate(Serpent, spawnPosition, Quaternion.identity);
+                serpent.GetComponent<Serpent>().serpentbehaviour.PlayAnimation(GetRandomAnimation());
+                yield return null;
             }
             else
             {
-                yield return null; 
+                yield return null;
             }
         }
     }
 
-    private IEnumerator SpawnObjects()
-    {
-            Vector3 spawnPosition = GetRandomPositionAroundPlayer();
-            GameObject serpent = Instantiate(Serpent, spawnPosition, Quaternion.identity);
-            serpent.GetComponent<Serpent>().serpentbehaviour.PlayAnimation(GetRandomAnimation());
-            yield return null;
-    }
-
     private Vector3 GetRandomPositionAroundPlayer()
     {
-        Vector2 randomCircle = Random.insideUnitCircle * radius;
-        Vector3 offset = new Vector3(randomCircle.x, 0, randomCircle.y);
+        // Only spawn in a cone in front of the player
+        float angle = Random.Range(-90f, 90f); // Front half
+        float distance = Random.Range(minSpawnDistance, radius); // Ensure it's not too close
 
-        Vector3 forwardOffset = player.transform.forward.normalized * 2f;
+        Quaternion rotation = Quaternion.Euler(0, angle, 0);
+        Vector3 direction = rotation * player.transform.forward;
 
-        Vector3 spawnPosition = player.transform.position + offset + forwardOffset;
-        spawnPosition.y = 0; 
+        Vector3 spawnOffset = direction.normalized * distance;
+        Vector3 spawnPosition = player.transform.position + spawnOffset;
+        spawnPosition.y = -5f;
+
         return spawnPosition;
     }
 
     public void SerpentAnimationOver()
     {
         SerpentActive = false;
+        StartCoroutine(SpawnObjects());
     }
 
     private string GetRandomAnimation()
@@ -83,11 +78,7 @@ public class SpawnSerpent : MonoBehaviour
         int index = Random.Range(0, animations.Length);
         return animations[index];
     }
-    
-    private float GetRandomInterval()
-    {
-        return Random.Range(7f, 10f);
-    }
+
 
     public void SetCanAttack(bool value) => CanAttack = value;
 
